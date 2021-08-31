@@ -48,10 +48,22 @@ public:
     ~SymbolTable() {};
 
     bool contains(SymbolTable& list,Symbol symbol,int *arr); // check xem da ton tai hay chua --> Undeclared va Redeclared
+    void add_Symbol(SymbolTable& list,Symbol symbol);
+
+    void InsetFront(Symbol val)    // Insert in front of the LL
+    {
+        SymbolNode* temp = new SymbolNode();
+        temp->data=val;
+        temp->next=p_head;
+        p_head = temp;
+    }
     SymbolNode* head() { return p_head; };
 public:
     SymbolNode* p_head; // Con trỏ pHead trỏ vào phần tử đầu tiên.
 };
+bool Symbol::valid_Symbol(string value_sb, string type_sb) {
+    return false;
+}
 #endif
 
 
