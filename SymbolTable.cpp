@@ -1,4 +1,4 @@
-#include "SymbolTable.h"
+/*#include "SymbolTable.h"
 using namespace std;
 void SymbolTable::run(string filename){
     string line,method,name,attribue;
@@ -44,7 +44,7 @@ bool SymbolTable::contains(SymbolTable &list, Symbol symbol,int *arr) {
         }
     }
     return true;
-}
+} */
 /*bool contains (SLinkedList& list, Soldier soldier){
     //Check if array contains soldier
     SoldierNode* head=list.head;
@@ -56,5 +56,17 @@ bool SymbolTable::contains(SymbolTable &list, Symbol symbol,int *arr) {
     }
     return false;
 }*/
+#include <stdio.h>
+#include <string>
+#include <regex>
+#include <string.h>
+#include <iostream>
+using namespace std;
+int main(){
+    string input="INSERT x number";
+    string action,name,attribute;
+    istringstream(input)>>action>>name>>attribute;
+    cout<<action<<" "<<name<<" "<<attribute;
 
+}
 
