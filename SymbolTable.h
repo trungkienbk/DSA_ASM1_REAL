@@ -1,3 +1,4 @@
+
 #ifndef SYMBOLTABLE_H
 #define SYMBOLTABLE_H
 #include "main.h"
@@ -29,6 +30,12 @@ public:
     void setValueSb(const string &valueSb) {
         value_sb = valueSb;
     }
+    void showInfo()
+    {
+        std::cout << "  Name = " << name_sb.c_str();
+        std::cout << "  Type = " << type_sb.c_str();
+        cout<<endl;
+    };
     bool validType(string name,string value);      // check xem dung loai hay ko ---> TypeMismatch
 };
 class SymbolNode{
@@ -43,29 +50,18 @@ public :
 class SymbolTable{
 public:
     //  SymbolTable() {};
+    SymbolNode* head;
     void run(string filename);
-    SymbolTable() {p_head = NULL;};
+    SymbolTable() {head = NULL;};
     ~SymbolTable() {};
-
-    bool contains(SymbolTable& list,Symbol symbol,int *arr); // check xem da ton tai hay chua --> Undeclared va Redeclared
+    bool contains(SymbolTable& list,Symbol symbol,int *arr);
+    bool contains_scope(SymbolTable& list,Symbol symbol,int *arr); // check xem da ton tai hay chua --> Undeclared va Redeclared
     void add_Symbol(SymbolTable& list,Symbol symbol);
-
-    void InsetFront(Symbol val)    // Insert in front of the LL
-    {
-        SymbolNode* temp = new SymbolNode();
-        temp->data=val;
-        temp->next=p_head;
-        p_head = temp;
-    }
-    SymbolNode* head() { return p_head; };
-public:
-    SymbolNode* p_head; // Con trỏ pHead trỏ vào phần tử đầu tiên.
+    void print_list(SymbolTable& list);
+     // Con trỏ pHead trỏ vào phần tử đầu tiên.
 };
 bool Symbol::valid_Symbol(string value_sb, string type_sb) {
     return false;
 }
 #endif
-
-
-
 
