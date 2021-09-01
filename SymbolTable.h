@@ -30,12 +30,6 @@ public:
     void setValueSb(const string &valueSb) {
         value_sb = valueSb;
     }
-    void showInfo()
-    {
-        std::cout << "  Name = " << name_sb.c_str();
-        std::cout << "  Type = " << type_sb.c_str();
-        cout<<endl;
-    };
     bool validType(string name,string value);      // check xem dung loai hay ko ---> TypeMismatch
 };
 class SymbolNode{
@@ -54,9 +48,10 @@ public:
     void run(string filename);
     SymbolTable() {head = NULL;};
     ~SymbolTable() {};
-    bool contains(SymbolTable& list,Symbol symbol,int *arr);
+    bool contains(SymbolTable& list,string name,int *arr);
     bool contains_scope(SymbolTable& list,Symbol symbol,int *arr); // check xem da ton tai hay chua --> Undeclared va Redeclared
     void add_Symbol(SymbolTable& list,Symbol symbol);
+    void update_Symbol(SymbolTable& list,string name);
     void print_list(SymbolTable& list);
      // Con trỏ pHead trỏ vào phần tử đầu tiên.
 };

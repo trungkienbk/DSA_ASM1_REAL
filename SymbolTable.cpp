@@ -33,10 +33,10 @@ void SymbolTable::run(string filename){
 // false -> thao tac dc
 // true -> ko thao tac dc
 // if contains == true ,thi goi ham kia.
-bool SymbolTable::contains(SymbolTable &list, Symbol symbol,int *arr) {
+bool SymbolTable::contains(SymbolTable &list, string name,int *arr) {
     SymbolNode* head=list.head;
     while(head!= nullptr){
-        if(head->data.name_sb == symbol.name_sb ){
+        if(head->data.name_sb == name ){
             return true;
         }
         head=head->next;
@@ -49,31 +49,29 @@ bool SymbolTable::contains_scope(SymbolTable &list, Symbol symbol, int *arr) {
 }
 
 void SymbolTable::add_Symbol(SymbolTable &list, Symbol symbol) {
-    if( list.head == nullptr  ) {
-        SymbolNode *head=list.head;
+    if( head == nullptr  ) {
         SymbolNode *temp=new SymbolNode;
         temp->data= symbol;
-        temp->next = list.head;
-        head = temp;
+        temp->next = head;
+        head=temp;
         cout<<"success with nullptr"<<endl;
     } else {
-        SymbolNode *head = list.head;
-        while(head->next != nullptr){
-            head=head->next;
+        SymbolNode *p=head;
+        while(p->next != nullptr){
+            p=p->next;
         }
         SymbolNode *temp = new SymbolNode;
         temp->data=symbol;
-        temp->next = head ->next;
-        head->next = temp;
+        temp->next = p ->next;
+        p->next = temp;
         cout<<"success"<<endl;
     }
-
 }
 
 void SymbolTable::print_list(SymbolTable &list) {
-    if(list.head == nullptr) cout<<"No elements";
+    if(head == nullptr) cout<<"No elements";
     else {
-        SymbolNode *temp = list.head;
+        SymbolNode *temp = head;
         while(temp!= nullptr){
             cout<<temp->data.name_sb<<" "<<temp->data.type_sb<<" "<<temp->data.value_sb<<endl;
             cout<<"BEGIN : "<<temp->data.scope_sb[0]<<" & END : "<<temp->data.scope_sb[1]<<endl;
@@ -81,14 +79,4 @@ void SymbolTable::print_list(SymbolTable &list) {
         }
     }
 }
-/*bool contains (SLinkedList& list, Soldier soldier){
-    //Check if array contains soldier
-    SoldierNode* head=list.head;
-    while(head!=nullptr){
-        if((head->data.ID== soldier.ID) && (head->data.HP==soldier.HP) && (head->data.isSpecial==soldier.isSpecial)){
-            return true;
-        }
-        head=head->next;
-    }
-    return false;
-*/
+
