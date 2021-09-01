@@ -1,7 +1,7 @@
 #include "SymbolTable.h"
 using namespace std;
 void SymbolTable::run(string filename){
-    SymbolTable list;
+    /*SymbolTable list;
     Symbol symbol("x","Number");
     Symbol symbol1("y","Number");
     Symbol symbol2("z","Number");
@@ -10,11 +10,19 @@ void SymbolTable::run(string filename){
     add_Symbol(list,symbol1);
     add_Symbol(list,symbol2);
     add_Symbol(list,symbol3);
-    print_list(list);
+    print_list(list); */
+    int count_line = 0;
+    int count_action = 0;
     string line,method,name,attribue;
     int *arr = new int[2]{0};
     fstream input_file;
     int count = 0;
+    input_file.open(filename);
+    if(input_file){
+        while(std::getline(input_file,line)){
+            count_line++;
+        }
+    }
     input_file.open(filename);
     if(input_file){
         while(std::getline(input_file,line)){
@@ -79,4 +87,3 @@ void SymbolTable::print_list(SymbolTable &list) {
         }
     }
 }
-
