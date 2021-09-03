@@ -5,6 +5,9 @@ INSERT zQFLz number
 LOOKUP ek
 INSERT fLpV string
 RPRINT
+BEGIN
+END
+BEGIN
 ASSIGN ek 'zhw'
 INSERT wvxe string
 INSERT sk number
@@ -16,16 +19,3 @@ INSERT vEd_q string
 INSERT gbO string
 INSERT zFZLGf number
 INSERT jw number
-INSERT mgTy number
-INSERT i number
-INSERT mpSpRx string
-ASSIGN i 'Tv'
-INSERT kcJ40 number
-INSERT ju string
-INSERT rIn5yZ number
-INSERT cN string
-INSERT nam number
-INSERT e number
-tMVhV4 n
-END
-INSERT oZ string

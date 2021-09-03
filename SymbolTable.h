@@ -1,4 +1,49 @@
-
+/*#ifndef SYMBOLTABLE_H
+#define SYMBOLTABLE_H
+#include "main.h"
+class Symbol{
+public:
+    vector<pair<int,int>> scope;
+    string name;
+    string type;
+    string value;
+public:
+    Symbol(){};
+    Symbol(string name,string type){
+        this->name =name;
+        this->name =type;
+    }
+    void setName(const string &name) {
+        Symbol::name = name;
+    }
+    void setType(const string &type) {
+        Symbol::type = type;
+    }
+};
+class Node{
+public:
+    Node(){
+        Node* next = nullptr;
+    }
+public:
+    Symbol data;
+    Node* next;
+};
+class SymbolTable
+{
+public:
+    //SymbolTable() {}
+    Node *head;
+    SymbolTable(){
+        head = nullptr;
+    }
+    ~SymbolTable() {};
+    void add_Symbol(SymbolTable& list,Symbol symbol);
+    void run(string filename);
+    void print_list(SymbolTable& list);
+};
+#endif
+ */
 #ifndef SYMBOLTABLE_H
 #define SYMBOLTABLE_H
 #include "main.h"
@@ -30,33 +75,32 @@ public:
     void setValueSb(const string &valueSb) {
         value_sb = valueSb;
     }
+    void showInfo()
+    {
+        std::cout << "  Name = " << name_sb.c_str();
+        std::cout << "  Type = " << type_sb.c_str();
+        cout<<endl;
+    };
     bool validType(string name,string value);      // check xem dung loai hay ko ---> TypeMismatch
 };
 class SymbolNode{
 public :
-
-    SymbolNode() {
-        SymbolNode* next=nullptr;
-    }
     Symbol data;
     SymbolNode* next;
 };
+SymbolNode *head;
 class SymbolTable{
 public:
-    //  SymbolTable() {};
-    SymbolNode* head;
     void run(string filename);
     SymbolTable() {head = NULL;};
     ~SymbolTable() {};
-    bool contains(SymbolTable& list,string name,int *arr);
+    bool contains(SymbolTable& list,Symbol symbol,int *arr);
     bool contains_scope(SymbolTable& list,Symbol symbol,int *arr); // check xem da ton tai hay chua --> Undeclared va Redeclared
     void add_Symbol(SymbolTable& list,Symbol symbol);
-    void update_Symbol(SymbolTable& list,string name);
     void print_list(SymbolTable& list);
-     // Con trỏ pHead trỏ vào phần tử đầu tiên.
+    // Con trỏ pHead trỏ vào phần tử đầu tiên.
 };
 bool Symbol::valid_Symbol(string value_sb, string type_sb) {
     return false;
 }
 #endif
-
